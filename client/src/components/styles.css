@@ -1,0 +1,118 @@
+.results{
+    background-color: yellowgreen;
+    color: orange;
+    height: 88.3vh;
+    width: 350px;
+    overflow: auto;
+    float: right;
+}
+
+.nn{
+    background-color: blue;
+
+}
+
+.table
+{   
+  /* padding: 15px 70px 0px 10px; */
+  /* top  right bottom left*/ 
+  margin: 15px 20px 0px 20px;
+  height: 87vh;
+  /* border-radius: 300px; */
+  /* border-color: blue; */
+  /* border-style:dotted; */
+  height: fit-content;
+}
+
+.watchlist {
+  background-color: cornsilk;
+  width: 570px;
+  height: 90vh;
+}
+.key {
+  width: 100px;
+  margin-right: 10px;
+}
+
+.prc {
+  width: 50px;
+  align-content: center;
+  justify-content: center;
+  margin-left: 50px;
+  text-align: center;
+}
+
+.form {
+  justify-self: center;
+  align-content: center;
+  justify-items: center;
+  justify-content: center;
+  align-self: center;
+  height: 500px;
+  width: 150px;
+  margin-top: 30px;
+  height: 200px;
+  margin-left: 50px;
+  margin-top: 40px;
+}
+
+.app {
+  display: flex;
+  flex-direction: row;
+}
+
+.watchlist{
+  flex-basis: 380px;
+	flex-grow: 0;
+	flex-shrink: 0;
+}
+
+.qty {
+  background-color: whitesmoke;
+  height: 250px;
+  width: 250px;
+  align-content: center;
+  justify-content: center;
+  justify-self: baseline;
+  margin-top: 250px;
+  border-radius: 5px;
+  box-shadow: cadetblue;
+}
+
+.nav {
+  background-color: blanchedalmond;
+}
+
+.margin{
+  margin-top: 15px;
+}
+
+.red{
+  background-color: rgb(241, 110, 110);
+}
+.blue{
+  background-color: rgb(88, 154, 240);
+}
+
+.redText{
+  text-decoration-color: red;
+  color: red;
+  font-weight:bold;
+  padding-right: 5px;
+}
+.greenText{
+  text-decoration-color: green;
+  color: green;
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+.formBody{
+  width: 450px;
+}
+
+.Alert{
+  justify-self: right;
+  
+  width: 100px;
+}
