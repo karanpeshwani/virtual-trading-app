@@ -7,9 +7,17 @@
     float: right;
 }
 
+.DDD{
+  background-color: rgb(193, 198, 193);
+}
+
 .nn{
     background-color: blue;
 
+}
+
+.typograph{
+  cursor: pointer;
 }
 
 .table

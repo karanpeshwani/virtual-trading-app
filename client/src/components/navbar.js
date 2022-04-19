@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate, Link, Outlet, useParams, NavLink,useLocation } from "react-router-dom";
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -17,7 +18,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 // import {fa-briefcase} from '@fortawesome/free-solid-svg-icons'
-
+import "./styles.css";
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -60,6 +61,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function PrimarySearchAppBar() {
+
+  const navigate = useNavigate();
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -161,12 +165,15 @@ export default function PrimarySearchAppBar() {
     <Box sx={{ flexGrow: 1}}>
       <AppBar position="static">
         <Toolbar>
-          
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
+            sx={{ display: { xs: 'none', sm: 'block' }}}
+            className="typograph"
+            onClick={()=>{
+              navigate("/");
+            }}
           >
             Virtual Trading App
           </Typography>
@@ -182,8 +189,10 @@ export default function PrimarySearchAppBar() {
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
+              <Badge badgeContent={2} color="error">
+                <MailIcon onClick={()=>{
+                  navigate("/holdings");
+                }} />
               </Badge>
             </IconButton>
             <IconButton

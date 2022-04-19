@@ -68,6 +68,7 @@ const Buy_form = (props) => {
         });
     }
   };
+
   useEffect(() => {
     console.log(userInput);
   }, [userInput]);
@@ -85,6 +86,7 @@ const Buy_form = (props) => {
             }}
             label="Quantity"
             type="number"
+            InputProps={{ inputProps: { min: 1, max: 10 } }}
             required="true"
             sx={{
               color: 'blue'

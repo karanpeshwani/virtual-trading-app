@@ -1,21 +1,44 @@
 // npm start
 import React, { useState, useEffect } from "react";
+import useToken from "./useToken";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+  Link,
+  Outlet,
+  useParams,
+  NavLink,
+  useLocation,
+} from "react-router-dom";
 import Navbar from "./components/navbar";
 import "./components/styles.css";
 import Watchlist from "./components/watchlist";
-// import Orderform from "./form/form";
 import Orderform2 from "./components/Orderform2";
 import HoldingsTable from "./component_2/dashboard";
 import Onn_the_sockets from "./components/Onn_the_sockets";
+import Login from "./component_2/Login";
 import axios from "axios";
 import url from "./url";
 import Home from "./component_2/home";
 import DBDataToMasterData from "./utility/DBDataToMasterData";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./component_2/about";
 const masterOBJ_1 = require("./utility/masterOBJ");
 const perm_d = require("./utility/permanent_data");
+
+function setToken(userToken) {
+  sessionStorage.setItem("token", JSON.stringify(userToken));
+}
+
+function getToken() {
+  const tokenString = sessionStorage.getItem("token");
+  const userToken = JSON.parse(tokenString);
+  return userToken?.token;
+}
+
 function App() {
+  const { token, setToken } = useToken();
   const [typeoftrade, settypeoftrade] = useState("");
   const [form, setform] = useState(false);
   const [Selected_stock, setSelected_stock] = useState("");
@@ -41,44 +64,86 @@ function App() {
   useEffect(() => {
     Onn_the_sockets(setmasterOBJ, perm_data);
     console.log("!!!!!!");
-  }, []);
+  }, [token]);
+
+  if (!token) {
+    return (
+      <div>
+        <Login setToken={setToken} />
+      </div>
+    );
+  }
 
   return (
-    <div>
-      <Navbar />
-      {form ? (
-        <Orderform2
-          perm_data={perm_data}
-          setchange_perm_data={setchange_perm_data}
-          masterOBJ={masterOBJ}
-          typeoftrade={typeoftrade}
-          Selected_stock={Selected_stock}
-          setform={setform}
-          form_={form}
-        />
-      ) : null}
-      <div className="app">
-        <Watchlist 
-          
-          settypeoftrade={settypeoftrade}
-          masterOBJ={masterOBJ}
-          key={key}
-          setkey={setkey}
-          setform={setform}
-          setSelected_stock={setSelected_stock}
-        />
-        <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
+    <div className="DDD">
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div>
+              <Navbar />
+              {form ? (
+                <Orderform2
+                  perm_data={perm_data}
+                  setchange_perm_data={setchange_perm_data}
+                  masterOBJ={masterOBJ}
+                  typeoftrade={typeoftrade}
+                  Selected_stock={Selected_stock}
+                  setform={setform}
+                  form_={form}
+                />
+              ) : null}
+              <Watchlist
+                settypeoftrade={settypeoftrade}
+                masterOBJ={masterOBJ}
+                key={key}
+                setkey={setkey}
+                setform={setform}
+                setSelected_stock={setSelected_stock}
+              />
+            </div>
+          }
+        ></Route>
 
-          <Route
-            path="/holdings"
-            element={
+        <Route
+          path="/holdings"
+          element={
+            <div>
+              <Navbar />
+              {form ? (
+                <Orderform2
+                  perm_data={perm_data}
+                  setchange_perm_data={setchange_perm_data}
+                  masterOBJ={masterOBJ}
+                  typeoftrade={typeoftrade}
+                  Selected_stock={Selected_stock}
+                  setform={setform}
+                  form_={form}
+                />
+              ) : null}
+              <Watchlist
+                settypeoftrade={settypeoftrade}
+                masterOBJ={masterOBJ}
+                key={key}
+                setkey={setkey}
+                setform={setform}
+                setSelected_stock={setSelected_stock}
+              />
               <HoldingsTable masterOBJ={masterOBJ} perm_data={perm_data} />
-            }
-          />
-        </Routes>
-      </div>
+            </div>
+          }
+        ></Route>
+
+        <Route
+          path="/about"
+          element={
+            <div>
+              <Navbar />
+              <About />
+            </div>
+          }
+        ></Route>
+      </Routes>
     </div>
   );
 }
@@ -86,3 +151,16 @@ function App() {
 export default App;
 
 /* <Alert className="Alert" variant="filled" severity="success">Executed Successfully</Alert> */
+
+
+/*
+<Route
+path="/login"
+element={
+  <div>
+    <Login setToken={setToken} />
+  </div>
+}
+></Route>
+
+*/
