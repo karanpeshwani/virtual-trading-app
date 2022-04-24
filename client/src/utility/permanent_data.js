@@ -1,3 +1,7 @@
+/*
+This variable is used for storing the current Quantity holdings and their average price of the user.
+*/ 
+
 var permanent_data = {
     "TSLA": {
       symbol: "TSLA",

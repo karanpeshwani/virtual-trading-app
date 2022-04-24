@@ -17,7 +17,7 @@ import "./components/styles.css";
 import Watchlist from "./components/watchlist";
 import Orderform2 from "./components/Orderform2";
 import HoldingsTable from "./component_2/dashboard";
-import Onn_the_sockets from "./components/Onn_the_sockets";
+import On_the_sockets from "./components/on-sockets";
 import Login from "./component_2/Login";
 import axios from "axios";
 import url from "./url";
@@ -26,16 +26,6 @@ import DBDataToMasterData from "./utility/DBDataToMasterData";
 import About from "./component_2/about";
 const masterOBJ_1 = require("./utility/masterOBJ");
 const perm_d = require("./utility/permanent_data");
-
-function setToken(userToken) {
-  sessionStorage.setItem("token", JSON.stringify(userToken));
-}
-
-function getToken() {
-  const tokenString = sessionStorage.getItem("token");
-  const userToken = JSON.parse(tokenString);
-  return userToken?.token;
-}
 
 function App() {
   const { token, setToken } = useToken();
@@ -62,8 +52,7 @@ function App() {
   }, [change_perm_data]);
 
   useEffect(() => {
-    Onn_the_sockets(setmasterOBJ, perm_data);
-    console.log("!!!!!!");
+    On_the_sockets(setmasterOBJ, perm_data);
   }, [token]);
 
   if (!token) {

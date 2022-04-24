@@ -1,22 +1,21 @@
-import axios from "axios";
-// import React from "react";
-import Showprice from "./webs_cli";
-import url from "../url";
+// Maybe not in use
 
-function Get_Price_Obj(setprices_obj) {
+// import axios from "axios";
+// import Showprice from "./client-server-socket";
+// import url from "../url";
 
-  axios
-    .post(url + `/getData/price/query/abc`)
-    .then((res) => {
-      console.log(res);
-      Showprice(setprices_obj);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-}
+// function Get_Price_Obj(setprices_obj) {
 
-module.exports = Get_Price_Obj;
+//   axios
+//     .post(url + `/getData/price/query/abc`)
+//     .then((res) => {
+//       console.log(res);
+//       Showprice(setprices_obj);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// }
+
 // module.exports = Get_Price_Obj;
-// export default Get_Price_Obj;
 

@@ -1,6 +1,6 @@
 // npm run karan to start
 
-//                                     ************ when to use require/import *************
+//   ************ when to use require/import *************
 const express = require("express");
 var session = require('express-session')
 const router = express.Router();
@@ -12,17 +12,12 @@ const passport = require('passport');
 app.use(passport.initialize());
 app.use(passport.session());
 port = 5000;
-cors = require("cors"); //what is the use of cors
+cors = require("cors");
 const http = require('http');
 const server = http.createServer(app);
-const Data_from_api = require("./utility/webs_ser");
-// const { Server } = require("socket.io");
-// const io = new Server(server);
-
-// const pricedata = require("./pricedata")                         //loading data form the websocket
-
+const onServerClientSocket_and_onFinhubWebSocket_func = require("./utility/on-sockets");
 app.use(cors());
-app.use(express.json()); //what is the use of body-parser
+app.use(express.json());
 
 app.use(
   cors({
@@ -31,22 +26,11 @@ app.use(
 );
 
 
-Data_from_api();
-
-// io.on('connection', (socket) => {
-//   console.log('a user connected');
-// });
+onServerClientSocket_and_onFinhubWebSocket_func();
 
 // GETTING THE ROUTES
 const getRouter = require("./routes/getRoutes");
 const postRouter = require("./routes/postRoutes");
-const { redirect } = require("express/lib/response");
-const res = require("express/lib/response");
-// const Data_from_api = require('./utility/webs_ser')
-
-// Data_from_api();
-
-// app.use("/getdata", dataRoutes);
 app.use(getRouter)
 app.use(postRouter)
 

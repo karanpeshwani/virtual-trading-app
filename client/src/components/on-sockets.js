@@ -1,10 +1,14 @@
+/*
+Function to get the gata stored in database and on the client-server-socket.
+This function runs every time a new token-key is provided (when new user logs-in).
+*/
+
 import axios from "axios";
 import url from "../url";
-import "./styles.css";
-import ONN_client_socket from "../utility/webs_cli";
+import clientServerSocket from "../utility/client-server-socket";
 import DBDataToMasterData from "../utility/DBDataToMasterData";
 
-function Onn_the_sockets(setmasterOBJ, perm_data) {
+function On_the_sockets(setmasterOBJ, perm_data) {
   console.log("ON Sockets");
   axios
     .post(url + "/get_BD_data")
@@ -17,11 +21,11 @@ function Onn_the_sockets(setmasterOBJ, perm_data) {
       })
     })
     .then(() => {
-      ONN_client_socket(setmasterOBJ,perm_data);
+      clientServerSocket(setmasterOBJ,perm_data);
     })
     .catch((err) => {
       console.log(err);
     });
 }
 
-export default Onn_the_sockets;
+export default On_the_sockets;

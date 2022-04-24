@@ -1,3 +1,6 @@
+/*
+Login page of the app
+*/
 import React, { useState } from "react";
 import "./formStyles.css";
 import CustomInput from "./components/CustomInput";
@@ -59,90 +62,3 @@ const Login = (props) => {
 }
 
 export default Login;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-
-import React, { useState } from "react";
-
-const Login = (props) => {
-  const { setToken } = props;
-  const [username, setUserName] = useState();
-  const [password, setPassword] = useState();
-
-  async function loginUser(credentials) {
-    return fetch('http://localhost:5000/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(credentials)
-    })
-      .then(data => data.json())
-   }
-
-   const handleSubmit = async e => {
-    e.preventDefault();
-    const token = await loginUser({
-      username,
-      password
-    });
-    console.log(token);
-    setToken(token);
-  }
-
-  return (
-    <div className="login-wrapper">
-      <h1>Please Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <p>Username</p>
-        <input type="email" onChange={(e) => setUserName(e.target.value)} />
-
-        <p>Password</p>
-        <input type="password" onChange={(e) => setPassword(e.target.value)} />
-
-        <div>
-          <button type="submit">Submit</button>
-        </div>
-      </form>
-    </div>
-  );
-};
-
-export default Login;
-
-*/
