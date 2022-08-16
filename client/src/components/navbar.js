@@ -162,9 +162,9 @@ export default function PrimarySearchAppBar() {
   );
 
   return (
-    <Box sx={{ flexGrow: 1}}>
-      <AppBar position="static">
-        <Toolbar>
+    <Box sx={{ flexGrow: 1 , height : 70}}>
+      <AppBar position="static" sx={{ height : 70}}>
+        <Toolbar >
           <Typography
             variant="h6"
             noWrap

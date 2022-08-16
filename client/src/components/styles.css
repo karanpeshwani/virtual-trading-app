@@ -1,5 +1,7 @@
+/*         Imported in App.js             */
+
 .results{
-    background-color: yellowgreen;
+    background-color: rgb(71, 9, 71);
     color: orange;
     height: 88.3vh;
     width: 350px;
@@ -7,47 +9,17 @@
     float: right;
 }
 
-.DDD{
-  background-color: rgb(193, 198, 193);
-}
-
 .nn{
     background-color: blue;
-
 }
 
 .typograph{
   cursor: pointer;
 }
 
-.table
-{   
-  /* padding: 15px 70px 0px 10px; */
-  /* top  right bottom left*/ 
-  margin: 15px 20px 0px 20px;
-  height: 87vh;
-  /* border-radius: 300px; */
-  /* border-color: blue; */
-  /* border-style:dotted; */
-  height: fit-content;
-}
-
-.watchlist {
-  background-color: cornsilk;
-  width: 570px;
-  height: 90vh;
-}
 .key {
   width: 100px;
   margin-right: 10px;
-}
-
-.prc {
-  width: 50px;
-  align-content: center;
-  justify-content: center;
-  margin-left: 50px;
-  text-align: center;
 }
 
 .form {
@@ -69,11 +41,6 @@
   flex-direction: row;
 }
 
-.watchlist{
-  flex-basis: 380px;
-	flex-grow: 0;
-	flex-shrink: 0;
-}
 
 .qty {
   background-color: whitesmoke;

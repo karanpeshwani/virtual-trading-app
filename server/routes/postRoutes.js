@@ -78,6 +78,27 @@ router.post("/getData/price/query/hello_sell", (req, res) => {
   // res.send()
 });
 
+function generate_token(length){
+  //edit the token allowed characters
+  var a = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".split("");
+  var b = [];  
+  for (var i=0; i<length; i++) {
+      var j = (Math.random() * (a.length-1)).toFixed(0);
+      b[i] = a[j];
+  }
+  return b.join("");
+}
+
+router.post("/login", (req, res) => {
+  const credentials = JSON.stringify(req.body);
+  console.log(credentials);
+  console.log("jjjjjjjjj");
+  const Token = generate_token(50);
+  res.send({
+    token: Token
+  });
+});
+
 // router.post("/getData/price/query/AAPL" , (req,res)=>{
 //   // const sym = req.params.sym;
 //   // const symbl = req.params.sym;
@@ -87,5 +108,7 @@ router.post("/getData/price/query/hello_sell", (req, res) => {
 //   res.sendStatus(200);
 
 // })
+
+
 
 module.exports = router;

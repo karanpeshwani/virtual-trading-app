@@ -1,0 +1,17 @@
+.table
+{
+  /* height: 87vh; */
+  height: fit-content;
+  overflow: auto;
+  /* margin: 15px; */
+  border-radius: 15px !important; 
+  border-color: blue;
+  box-shadow: 5px 5px 5px 5px grey !important;
+}
+
+.dv1{
+  width: calc(100vw - 400px) !important;
+  height: calc(100vh - 70px) !important;
+  /* border-radius: 50px; */
+  padding: 10px 15px 10px 0px;
+}

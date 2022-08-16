@@ -13,10 +13,11 @@ import {
   useLocation,
 } from "react-router-dom";
 import Navbar from "./components/navbar";
-import "./components/styles.css";
+// import "./components/styles.css";
+import "../src/stylings/App.css";
 import Watchlist from "./components/watchlist";
 import Orderform2 from "./components/Orderform2";
-import HoldingsTable from "./component_2/dashboard";
+import HoldingsTable from "./component_2/holdingsTable";
 import On_the_sockets from "./components/on-sockets";
 import Login from "./component_2/Login";
 import axios from "axios";
@@ -82,14 +83,16 @@ function App() {
                   form_={form}
                 />
               ) : null}
-              <Watchlist
-                settypeoftrade={settypeoftrade}
-                masterOBJ={masterOBJ}
-                key={key}
-                setkey={setkey}
-                setform={setform}
-                setSelected_stock={setSelected_stock}
-              />
+              <div className="pageBody">
+                <Watchlist
+                  settypeoftrade={settypeoftrade}
+                  masterOBJ={masterOBJ}
+                  key={key}
+                  setkey={setkey}
+                  setform={setform}
+                  setSelected_stock={setSelected_stock}
+                />
+              </div>
             </div>
           }
         ></Route>
@@ -110,15 +113,17 @@ function App() {
                   form_={form}
                 />
               ) : null}
-              <Watchlist
-                settypeoftrade={settypeoftrade}
-                masterOBJ={masterOBJ}
-                key={key}
-                setkey={setkey}
-                setform={setform}
-                setSelected_stock={setSelected_stock}
-              />
-              <HoldingsTable masterOBJ={masterOBJ} perm_data={perm_data} />
+              <div className="pageBody">
+                <Watchlist
+                  settypeoftrade={settypeoftrade}
+                  masterOBJ={masterOBJ}
+                  key={key}
+                  setkey={setkey}
+                  setform={setform}
+                  setSelected_stock={setSelected_stock}
+                />
+                <HoldingsTable masterOBJ={masterOBJ} perm_data={perm_data} />
+              </div>
             </div>
           }
         ></Route>
@@ -140,7 +145,6 @@ function App() {
 export default App;
 
 /* <Alert className="Alert" variant="filled" severity="success">Executed Successfully</Alert> */
-
 
 /*
 <Route

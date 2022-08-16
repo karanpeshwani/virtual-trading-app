@@ -1,0 +1,13 @@
+
+.DDD{
+  background-color: rgb(255, 255, 255);
+}
+
+.pageBody{
+  background-color: pink;
+  display: flex;
+  /* margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px; */
+  height: calc(100vh - 70px) !important;
+}

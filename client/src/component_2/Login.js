@@ -30,35 +30,36 @@ const Login = (props) => {
       body: JSON.stringify(credentials)
     })
       .then(data => data.json())
-   }
-    return (
-      <div className="Login">
-        <form className="form" onSubmit={handleSubmit}>
-          <CustomInput
-            labelText="Email"
-            id="email"
-            formControlProps={{
-              fullWidth: true
-            }}
-            onChange={(e) => setUserName(e.target.value)}
-            type="text"
-          />
-          <CustomInput
-            labelText="Password"
-            id="password"
-            formControlProps={{
-              fullWidth: true
-            }}
-            onChange={(e) => setPassword(e.target.value)} 
-            type="password"
-          />
+  }
 
-          <Button type="submit" color="primary" className="form__custom-button">
-            Log in
-          </Button>
-        </form>
-      </div>
-    );
+  return (
+    <div className="Login">
+      <form className="form" onSubmit={handleSubmit}>
+        <CustomInput
+          labelText="Email"
+          id="email"
+          formControlProps={{
+            fullWidth: true
+          }}
+          onChange={(e) => setUserName(e.target.value)}
+          type="text"
+        />
+        <CustomInput
+          labelText="Password"
+          id="password"
+          formControlProps={{
+            fullWidth: true
+          }}
+          onChange={(e) => setPassword(e.target.value)} 
+          type="password"
+        />
+
+        <Button type="submit" color="primary" className="form__custom-button">
+          Log in
+        </Button>
+      </form>
+    </div>
+  );
 }
 
 export default Login;
