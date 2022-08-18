@@ -2,64 +2,90 @@
 Login page of the app
 */
 import React, { useState } from "react";
-import "./formStyles.css";
+// import "./formStyles.css";
+import "../stylings/login.css"
 import CustomInput from "./components/CustomInput";
 import Button from "./components/Button";
+import TextField from "@mui/material/TextField";
 
 const Login = (props) => {
-  const { setToken } = props;
-  const [username, setUserName] = useState();
-  const [password, setPassword] = useState();
+  const { email , setEmail , setToken } = props;
+  const [password, setPassword] = useState(null);
+  const [error, setError] = useState(null);
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = await loginUser({
-      username,
-      password
-    });
+    console.log(email);
+    console.log(password);
+    const token = await loginUser({ email: email, password: password });
+    // if(token)
     console.log(token);
-    setToken(token);
-  }
+    if(token.token === "not-a-token"){
+      // setError
+      setError("Either the user is not registered or the password is incorrect. Please try again.")
+    }
+    else{
+      setToken(token);
+    }
+    console.log(token);
+  };
 
   async function loginUser(credentials) {
-    return fetch('http://localhost:5000/login', {
-      method: 'POST',
+    return fetch("http://localhost:5000/login", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(credentials)
-    })
-      .then(data => data.json())
+      body: JSON.stringify(credentials),
+    }).then((data) => data.json());
   }
 
   return (
     <div className="Login">
       <form className="form" onSubmit={handleSubmit}>
-        <CustomInput
-          labelText="Email"
-          id="email"
-          formControlProps={{
-            fullWidth: true
+      <div className="dv1" />
+        <TextField
+          required
+          id="outlined-required"
+          label="Required"
+          type="email"
+          placeholder="Email"
+          className="tf1"
+          value={email}
+          onChange={(e)=>{
+            setEmail(e.target.value)
           }}
-          onChange={(e) => setUserName(e.target.value)}
-          type="text"
-        />
-        <CustomInput
-          labelText="Password"
-          id="password"
-          formControlProps={{
-            fullWidth: true
-          }}
-          onChange={(e) => setPassword(e.target.value)} 
-          type="password"
         />
 
-        <Button type="submit" color="primary" className="form__custom-button">
+        <div className="dv1" />
+
+        <TextField
+          required
+          id="outlined-required"
+          label="Required"
+          type="password"
+          placeholder="Password"
+          className="tf2"
+
+          value={password}
+          onChange={(e)=>{
+            setPassword(e.target.value)
+          }}
+        />
+        <div className="dv4">{error}</div>
+        <Button
+          type="submit"
+          color="primary"
+          className="form__custom-button"
+          onSubmit={(e) => {
+            handleSubmit(e);
+          }}
+        >
           Log in
         </Button>
       </form>
     </div>
   );
-}
+};
 
 export default Login;

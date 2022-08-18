@@ -37,7 +37,7 @@ function App() {
   const [masterOBJ, setmasterOBJ] = useState(masterOBJ_1);
   const [perm_data, setperm_data] = useState(perm_d);
   const [change_perm_data, setchange_perm_data] = useState(true);
-
+  const [email, setEmail] = useState("karanpeshwani7@gmail.com");
   useEffect(() => {
     axios.post(url + "/get_BD_data").then((res) => {
       console.log(res.data);
@@ -59,7 +59,7 @@ function App() {
   if (!token) {
     return (
       <div>
-        <Login setToken={setToken} />
+        <Login email={email} setEmail={setEmail} setToken={setToken} />
       </div>
     );
   }

@@ -3,6 +3,7 @@ const router = express.Router();
 const ticker_list_obj = require("../utility/tickerdata");
 const update_data_buy = require("../mongodb_functions/update_data_buy");
 const update_data_sell = require("../mongodb_functions/update_data_sell");
+const autheriseUser = require("../mongodb_functions/autheriseUser");
 const { route } = require("./getRoutes");
 const get_BD_data = require("../mongodb_functions/getTable");
 let ticker = "";
@@ -19,6 +20,9 @@ router.post("/get_BD_data", (req, res) => {
     })
     .catch((e) => console.log(e));
 });
+
+
+
 
 router.post("/getData/send/query/:ticker", (req, res) => {
   ticker = req.params.ticker;
@@ -90,13 +94,28 @@ function generate_token(length){
 }
 
 router.post("/login", (req, res) => {
-  const credentials = JSON.stringify(req.body);
-  console.log(credentials);
-  console.log("jjjjjjjjj");
-  const Token = generate_token(50);
-  res.send({
-    token: Token
-  });
+  const credentials = req.body;
+
+  var email = credentials.email;
+  var password = credentials.password;
+
+  console.log(email);
+  console.log(password);
+
+  autheriseUser(credentials)
+  .then((result)=>{
+    if(result === "success"){
+      const Token = generate_token(50);
+      res.send({
+        token: Token
+      });
+    }
+    else{
+      res.send({
+        token: "not-a-token"
+      });
+    }
+  })
 });
 
 // router.post("/getData/price/query/AAPL" , (req,res)=>{
