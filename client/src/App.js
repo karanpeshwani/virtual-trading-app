@@ -38,8 +38,24 @@ function App() {
   const [perm_data, setperm_data] = useState(perm_d);
   const [change_perm_data, setchange_perm_data] = useState(true);
   const [email, setEmail] = useState("karanpeshwani7@gmail.com");
+
+  /*
   useEffect(() => {
-    axios.post(url + "/get_BD_data").then((res) => {
+    axios.get(url + "/get_BD_data", {headers : {"email" : email}} ).then((res) => {
+      console.log(res.data);
+      DBDataToMasterData(res.data).then((res) => {
+        setperm_data((old) => {
+          return {
+            ...old,
+            ...res,
+          };
+        });
+      });
+    });
+  }, [change_perm_data]);
+  */
+  useEffect(() => {
+    axios.get(url + `/${email}/get_BD_data`, {headers : {"email" : email}} ).then((res) => {
       console.log(res.data);
       DBDataToMasterData(res.data).then((res) => {
         setperm_data((old) => {
@@ -53,7 +69,7 @@ function App() {
   }, [change_perm_data]);
 
   useEffect(() => {
-    On_the_sockets(setmasterOBJ, perm_data);
+    On_the_sockets(setmasterOBJ, perm_data, email);
   }, [token]);
 
   if (!token) {
