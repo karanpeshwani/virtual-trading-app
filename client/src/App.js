@@ -38,32 +38,21 @@ function App() {
   const [perm_data, setperm_data] = useState(perm_d);
   const [change_perm_data, setchange_perm_data] = useState(true);
   const [email, setEmail] = useState("karanpeshwani7@gmail.com");
+  const [cashRemaining, setCashRemaining] = useState(1000000);
+  const [PandL, setPandL] = useState(0);
 
-  /*
-  useEffect(() => {
-    axios.get(url + "/get_BD_data", {headers : {"email" : email}} ).then((res) => {
-      console.log(res.data);
-      DBDataToMasterData(res.data).then((res) => {
-        setperm_data((old) => {
-          return {
-            ...old,
-            ...res,
-          };
-        });
-      });
-    });
-  }, [change_perm_data]);
-  */
   useEffect(() => {
     axios.get(url + `/${email}/get_BD_data`, {headers : {"email" : email}} ).then((res) => {
+      setCashRemaining((res.data)["cash_remaining"]);
       console.log(res.data);
-      DBDataToMasterData(res.data).then((res) => {
+      DBDataToMasterData(res.data).then(([res, pl]) => {
         setperm_data((old) => {
           return {
             ...old,
             ...res,
           };
         });
+        setPandL(pl.toFixed(2));
       });
     });
   }, [change_perm_data]);
@@ -100,14 +89,29 @@ function App() {
                 />
               ) : null}
               <div className="pageBody">
-                <Watchlist
-                  settypeoftrade={settypeoftrade}
-                  masterOBJ={masterOBJ}
-                  key={key}
-                  setkey={setkey}
-                  setform={setform}
-                  setSelected_stock={setSelected_stock}
-                />
+                <div className="abb1">
+                  <Watchlist
+                    settypeoftrade={settypeoftrade}
+                    masterOBJ={masterOBJ}
+                    key={key}
+                    setkey={setkey}
+                    setform={setform}
+                    setSelected_stock={setSelected_stock}
+                  />
+                </div>
+                <div className="abb2">
+                  <h4>Hello User, {email}</h4>
+                  <hr />
+                  <h5>Cash Remaining : {cashRemaining.toFixed(2)}</h5>
+                  <hr />
+                  <div className="abb3">
+                    <h5>Total Profit/Loss : </h5>
+                    <div className="margin10px"></div>
+                    <h5 className={ PandL > 0
+                          ? "greenText"
+                          : "redText"}>{PandL}</h5>
+                  </div>
+                </div>
               </div>
             </div>
           }
@@ -159,17 +163,3 @@ function App() {
 }
 
 export default App;
-
-/* <Alert className="Alert" variant="filled" severity="success">Executed Successfully</Alert> */
-
-/*
-<Route
-path="/login"
-element={
-  <div>
-    <Login setToken={setToken} />
-  </div>
-}
-></Route>
-
-*/

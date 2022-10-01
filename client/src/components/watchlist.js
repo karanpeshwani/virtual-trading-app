@@ -33,29 +33,35 @@ export default function BasicList(props) {
         <nav aria-label="secondary mailbox folders">
           <ListGroup variant="flush">
             {Object.entries(masterOBJ).map(([key_1, val]) => {
-              return (
-                <ListGroup.Item
-                  disablePadding
-                  onMouseLeave={() => setkeyj("")}
-                  onMouseEnter={() => {
-                    setkeyj(key_1);
-                  }}
-                >
-                  <ListItemButton>
-                    <ListItemText primary={key_1} />
 
-                    {keyj === key_1 ? (
-                      <Buttons
-                        settypeoftrade={settypeoftrade}
-                        keyj={key_1}
-                        setSelected_stock={setSelected_stock}
-                        setform={setform}
-                      />
-                    ) : null}
-                    <div className="prc"> {val["LTP"]} </div>
-                  </ListItemButton>
-                </ListGroup.Item>
-              );
+              if(val["LTP"] != 0){  
+                return (
+                  <ListGroup.Item
+                    disablePadding
+                    onMouseLeave={() => setkeyj("")}
+                    onMouseEnter={() => {
+                      setkeyj(key_1);
+                    }}
+                  >
+                    <ListItemButton>
+                      <ListItemText primary={key_1} />
+
+                      {keyj === key_1 ? (
+                        <Buttons
+                          settypeoftrade={settypeoftrade}
+                          keyj={key_1}
+                          setSelected_stock={setSelected_stock}
+                          setform={setform}
+                        />
+                      ) : null}
+                      <div className="prc"> {val["LTP"]} </div>
+                    </ListItemButton>
+                  </ListGroup.Item>
+                );
+              }
+              else{
+                return (<div></div>);
+              }
             })}
           </ListGroup>
         </nav>

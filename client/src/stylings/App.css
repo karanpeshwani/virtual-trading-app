@@ -4,10 +4,31 @@
 }
 
 .pageBody{
-  background-color: pink;
+  background-color: rgba(185, 187, 188, 0.728);
   display: flex;
   /* margin-top: 10px;
   margin-left: 10px;
   margin-right: 10px; */
   height: calc(100vh - 70px) !important;
+}
+
+.abb2{
+  margin-top: 15px;
+  margin-left: 20px;
+}
+
+.abb3{
+  display: flex;
+}
+
+.greenText{
+  color: green;
+}
+
+.redText{
+  color: red;
+}
+
+.margin10px{
+  margin-right: 10px;
 }

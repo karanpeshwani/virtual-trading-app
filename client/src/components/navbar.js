@@ -13,9 +13,10 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
+import WorkIcon from '@mui/icons-material/Work';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import InfoIcon from '@mui/icons-material/Info';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 // import {fa-briefcase} from '@fortawesome/free-solid-svg-icons'
 import "./styles.css";
@@ -129,7 +130,7 @@ export default function PrimarySearchAppBar() {
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="error">
-            <MailIcon />
+            <WorkIcon />
           </Badge>
         </IconButton>
         <p>Messages</p>
@@ -189,8 +190,8 @@ export default function PrimarySearchAppBar() {
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={2} color="error">
-                <MailIcon onClick={()=>{
+              <Badge color="error">
+                <WorkIcon onClick={()=>{
                   navigate("/holdings");
                 }} />
               </Badge>
@@ -200,8 +201,10 @@ export default function PrimarySearchAppBar() {
               aria-label="show 17 new notifications"
               color="inherit"
             >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
+              <Badge color="error">
+                <InfoIcon onClick={()=>{
+                  navigate("/about");
+                }} />
               </Badge>
             </IconButton>
             <IconButton
