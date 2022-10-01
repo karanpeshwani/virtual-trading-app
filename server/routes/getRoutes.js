@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const ticker_list_obj = require("../utility/tickerdata");
-const onServerClientSocket_and_onFinhubWebSocket_func = require("../utility/on-sockets");
-
 const update_data_buy = require("../mongodb_functions/update_data_buy");
 const update_data_sell = require("../mongodb_functions/update_data_sell");
 
@@ -27,11 +25,6 @@ router.post("/getData/send/query/:ticker", (req, res) => {
   }
   res.send(dict);
 });
-
-// router.post("/getData/price/query/abc", (req, res) => {
-//   onServerClientSocket_and_onFinhubWebSocket_func();
-//   res.sendStatus(200);
-// });
 
 router.post("/getData/price/query/hello", (req, res) => {
   const dt = req.body;

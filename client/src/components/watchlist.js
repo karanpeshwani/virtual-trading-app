@@ -5,9 +5,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Buttons from "./button";
 import "../stylings/watchlist.css";
-
 import ListGroup from "react-bootstrap/ListGroup";
-import { CallReceived } from "@material-ui/icons";
 
 export default function BasicList(props) {
   const { masterOBJ, settypeoftrade, setform, setSelected_stock } = props;
@@ -18,17 +16,18 @@ export default function BasicList(props) {
     <div className="dv3">
       <Box
         className="watchlist"
-        // overflow={"auto"}
+        /*
         sx={
           {
-            // height: "89.6vh",
-            // bgcolor: "background.paper",
-            // height : '400px'
-            // height: 'calc("100vh - 150px")',
-            // 'min-height' : 'calc(~"100vh - 150px")',
-            // height : calc(100% - 100px)
+            height: "89.6vh",
+            bgcolor: "background.paper",
+            height : '400px'
+            height: 'calc("100vh - 150px")',
+            'min-height' : 'calc(~"100vh - 150px")',
+            height : calc(100% - 100px)
           }
         }
+        */
       >
         <nav aria-label="secondary mailbox folders">
           <ListGroup variant="flush">

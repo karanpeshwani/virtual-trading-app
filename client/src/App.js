@@ -1,30 +1,21 @@
 // npm start
 import React, { useState, useEffect } from "react";
-import useToken from "./useToken";
+import useToken from "./utility/useToken";
 import {
-  BrowserRouter as Router,
   Routes,
   Route,
-  useNavigate,
-  Link,
-  Outlet,
-  useParams,
-  NavLink,
-  useLocation,
 } from "react-router-dom";
 import Navbar from "./components/navbar";
-// import "./components/styles.css";
 import "../src/stylings/App.css";
 import Watchlist from "./components/watchlist";
-import Orderform2 from "./components/Orderform2";
-import HoldingsTable from "./component_2/holdingsTable";
-import On_the_sockets from "./components/on-sockets";
-import Login from "./component_2/Login";
+import Orderform2 from "./components/Orderform";
+import HoldingsTable from "./components/holdingsTable";
+import On_the_sockets from "./utility/on-sockets";
+import Login from "./components/Login";
 import axios from "axios";
-import url from "./url";
-import Home from "./component_2/home";
+import url from "./utility/url";
 import DBDataToMasterData from "./utility/DBDataToMasterData";
-import About from "./component_2/about";
+import About from "./components/about";
 const masterOBJ_1 = require("./utility/masterOBJ");
 const perm_d = require("./utility/permanent_data");
 

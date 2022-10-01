@@ -2,10 +2,8 @@
 Login page of the app
 */
 import React, { useState } from "react";
-// import "./formStyles.css";
 import "../stylings/login.css"
-import CustomInput from "./components/CustomInput";
-import Button from "./components/Button";
+import Button from "../components/Coppied_Components/components/Button";
 import TextField from "@mui/material/TextField";
 
 const Login = (props) => {
@@ -15,11 +13,7 @@ const Login = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email);
-    console.log(password);
     const token = await loginUser({ email: email, password: password });
-    // if(token)
-    console.log(token);
     if(token.token === "not-a-token"){
       // setError
       setError("Either the user is not registered or the password is incorrect. Please try again.")

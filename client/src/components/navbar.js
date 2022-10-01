@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate, Link, Outlet, useParams, NavLink,useLocation } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -10,16 +10,13 @@ import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import WorkIcon from '@mui/icons-material/Work';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import InfoIcon from '@mui/icons-material/Info';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-// import {fa-briefcase} from '@fortawesome/free-solid-svg-icons'
-import "./styles.css";
+// import "./styles.css";
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -238,59 +235,3 @@ export default function PrimarySearchAppBar() {
     </Box>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-// import React from "react";
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import "./styles.css";
-// import "./styles.css"
-// import { RiShoppingBasketFill } from "react-icons/ri";
-// import { IconContext } from "react-icons";
-// import { SiBookstack } from "react-icons/si";
-// import { ImSearch } from "react-icons/im";
-
-// function Navbar() {
-//   return (
-//     <div>
-//       <nav className="navbar navbar-light nav">
-//         <div className="container-fluid">
-//           <a className="navbar-brand" href="https://www.google.com/">
-//             Virtual Trading App
-//           </a>
-//           <IconContext.Provider
-//             value={{ color: "black",size : "20", className: "global-class-name" }}
-//           >
-//             <div>
-//               <SiBookstack />
-//             </div>
-//           </IconContext.Provider>
-//           <IconContext.Provider
-//             value={{ color: "black",size : "20", className: "global-class-name" }}
-//           >
-//             <div>
-//               <RiShoppingBasketFill />
-//             </div>
-//           </IconContext.Provider>
-//           <IconContext.Provider
-//             value={{ color: "black",size : "18", className: "global-class-name" }}
-//           >
-//             <div>
-//               <ImSearch />
-//             </div>
-//           </IconContext.Provider>
-//         </div>
-//       </nav>
-//     </div>
-//   );
-// }
-
-// export default Navbar;

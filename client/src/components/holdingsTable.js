@@ -1,5 +1,4 @@
 import React from "react";
-// import "../components/styles.css";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -8,8 +7,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-// import { padding } from "@mui/system";
-// import "../components/styles.css";
 import "../stylings/holdingsTable.css";
 function roundToX(num, X) {
   return +(Math.round(num + "e+" + X) + "e-" + X);
@@ -37,7 +34,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const holdingsTable = (props) => {
   const { masterOBJ, perm_data } = props;
-  // console.log(perm_data);
   return (
     <div className="dv1">
       <TableContainer className="table" component={Paper}>
@@ -61,7 +57,6 @@ const holdingsTable = (props) => {
               if (perm_data[key]["QTY"] > 0) {
                 return (
                   <StyledTableRow
-                    // padding="normal"
                     key={perm_data[key]["symbol"]}
                   >
                     <StyledTableCell component="th" scope="row">

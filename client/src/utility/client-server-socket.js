@@ -7,8 +7,6 @@ function ON_client_socket(setmasterOBJ,perm_data) {
   });
   socket.on("message", (data) => {
     var obj_from_server = JSON.parse(data);
-
-
     var updated_obj={}
     for(var x in obj_from_server){
       console.log(x);
@@ -23,7 +21,6 @@ function ON_client_socket(setmasterOBJ,perm_data) {
           100,
       };
     }
-    // console.log(updated_obj);
     setmasterOBJ((old_dt) => {
       return {
         ...old_dt,
@@ -31,10 +28,6 @@ function ON_client_socket(setmasterOBJ,perm_data) {
       };
     });
   });
-
-  // socket.on("greetings", (elem1, elem2, elem3) => {
-  //   // console.log(elem1, elem2, elem3);
-  // });
 }
 
 module.exports = ON_client_socket;

@@ -1,9 +1,7 @@
 var masterOBJ = {
   "TSLA": {
     symbol: "TSLA",
-    // QTY1: 0,
     LTP: 0,
-    // avg_price1: 0,
     P_L: 0,
     percentage_change: 0,
   },

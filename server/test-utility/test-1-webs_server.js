@@ -4,8 +4,6 @@ const Getprice = require('../utility/test-pricedata')
 // Create a server object
 const server = net.createServer((socket) => {
 
-//   socket.write('SERVER: Hello! This is server speaking.<br>');
-
     function send_data(){
         const prc = Getprice();
         socket.write(prc.toString());
@@ -23,5 +21,3 @@ const server = net.createServer((socket) => {
 server.listen(9898, () => {
   console.log('opened server on', server.address().port);
 });
-
-// socket.end('SERVER: Closing connection now.<br>');

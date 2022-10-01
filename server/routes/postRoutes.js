@@ -4,42 +4,14 @@ const ticker_list_obj = require("../utility/tickerdata");
 const update_data_buy = require("../mongodb_functions/update_data_buy");
 const update_data_sell = require("../mongodb_functions/update_data_sell");
 const autheriseUser = require("../mongodb_functions/autheriseUser");
-const { route } = require("./getRoutes");
 const get_BD_data = require("../mongodb_functions/getTable");
 let ticker = "";
-let stock_sym = "";
-
-/*
-router.get("/get_BD_data", (req, res) => {
-  // const email = req.body.id;
-  const eml = req.headers.email;
-  const email = "karanpeshwani7@gmail.com"
-
-  if(eml === email){
-    console.log("matched -----------------------");
-  }
-  get_BD_data(eml)
-    .then((data) => {
-      console.log("DONE");
-      // console.log(data);
-      res.send(data);
-    })
-    .catch((e) => console.log(e));
-});
-*/
 
 router.get("/:eml/get_BD_data", (req, res) => {
-  // const email = req.body.id;
   const eml = req.params.eml;
-  const email = "karanpeshwani7@gmail.com"
-
-  if(eml === email){
-    console.log("matched -----------------------");
-  }
   get_BD_data(eml)
     .then((data) => {
       console.log("DONE");
-      // console.log(data);
       res.send(data);
     })
     .catch((e) => console.log(e));
@@ -65,25 +37,17 @@ router.post("/getData/send/query/:ticker", (req, res) => {
   }
 
   res.send(dict);
-  // res.sendStatus(200)
 });
 
-
-// router.post("/getData/Get_initial_DBdata", (req,res)=>{
-
-// })
-  // const sym = req.params.sym;
-  // const symbl = req.params.sym;
-  // console.log(typeof symbl);
-
 router.post("/getData/price/query/hello", (req, res) => {
-  // req.body = {
-  //   email : "karanpeshwani7@gmail.com",
-  //   quantity: qty,
-  //   margin_req: margin_req,
-  //   Selected_stock: Selected_stock,
-  // }
-
+  /*
+  req.body = {
+    email : "XXXX@XXXX.com",
+    quantity: qty,
+    margin_req: margin_req,
+    Selected_stock: Selected_stock,
+  }
+  */
   const dt = req.body;
 
   //update the database of the user
@@ -139,17 +103,5 @@ router.post("/login", (req, res) => {
     }
   })
 });
-
-// router.post("/getData/price/query/AAPL" , (req,res)=>{
-//   // const sym = req.params.sym;
-//   // const symbl = req.params.sym;
-//   const symbl = "AAPL"
-//   console.log(typeof symbl);
-//   Data_from_api(symbl);
-//   res.sendStatus(200);
-
-// })
-
-
 
 module.exports = router;

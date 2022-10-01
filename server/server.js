@@ -1,5 +1,4 @@
 // npm run karan to start
-//   ************ when to use require/import *************
 const express = require("express");
 var session = require('express-session')
 const router = express.Router();

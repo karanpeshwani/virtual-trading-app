@@ -6,37 +6,18 @@
     text-align: center;
 }
 
-
 .dv2{
     margin: 5px 17px 10px 5px;
     height: calc(100vh - 90px) !important;
-    /* height */
     width: 380px;
     overflow: auto;
     border-color: blue;
-    /* background-color: grey; */
     border-radius: 20px;
     box-shadow: 5px 5px 5px 5px grey;
-    
-    /* padding: 10px; */
 }
 
 .dv3{
     height: calc(100vh - 90px) !important;
     overflow: auto;
     border-radius: 20px;
-}
-
-.watchlist {
-    /* background-color: rgb(243, 7, 46); */
-    /* width: 373px; */
-    /* flex: 2; */
-    /* height: 400px; */
-    /* height: calc(100vh - 70px) !important; */
-    /* height: calc(100vh - 70px) !important; */
-    /* overflow:auto; */
-    /* height: 400px; */
-    /* padding: 10px;
-    border: 10px;
-    border-color: green; */
 }
