@@ -1,8 +1,8 @@
 const express = require("express");
-const router = express.Router();
 const ticker_list_obj = require("../utility/tickerdata");
 const update_data_buy = require("../mongodb_functions/update_data_buy");
 const update_data_sell = require("../mongodb_functions/update_data_sell");
+const router = express.Router();
 
 let ticker = "";
 
@@ -33,7 +33,6 @@ router.post("/getData/price/query/hello", (req, res) => {
   update_data_buy(dt)
     .then((portf) => res.send(portf))
     .catch((err) => console.log(err));
-  console.log(dt);
   // res.sendStatus(200)
 });
 

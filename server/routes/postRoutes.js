@@ -61,7 +61,7 @@ router.post("/getData/price/query/hello", (req, res) => {
 router.post("/getData/price/query/hello_sell", (req, res) => {
   const dt = req.body;
   //update the database of the user
-  update_data_sell(dt) //mongo_oper.js
+  update_data_sell(dt)
     .then((portf) => res.send(portf))
     .catch((err) => console.log(err));
   console.log(dt);

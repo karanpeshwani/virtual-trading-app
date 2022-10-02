@@ -1,20 +1,19 @@
-
-.DDD{
+.Div1{
   background-color: rgb(255, 255, 255);
 }
 
-.pageBody{
+.Div2{
   background-color: rgba(185, 187, 188, 0.728);
   display: flex;
   height: calc(100vh - 70px) !important;
 }
 
-.abb2{
+.Div3{
   margin-top: 15px;
   margin-left: 20px;
 }
 
-.abb3{
+.Div4{
   display: flex;
 }
 

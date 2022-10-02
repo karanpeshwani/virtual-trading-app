@@ -18,12 +18,8 @@ async function update_data_sell(obj) {
     }
 
     //user is already registered
-    else {
-
-      //update the portfolio and cash in hand
-      //successful = 1
-      console.log("successful");
-
+    else { //update the portfolio and cash in hand
+      
       //user has nothing in the portfolio
       if (user.portfolio === undefined) {
         console.log("No such Stock available to sell");
