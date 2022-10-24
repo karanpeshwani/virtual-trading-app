@@ -1,62 +1,4 @@
-/*         Imported in App.js             */
-
-.results{
-    background-color: rgb(71, 9, 71);
-    color: orange;
-    height: 88.3vh;
-    width: 350px;
-    overflow: auto;
-    float: right;
-}
-
-.nn{
-    background-color: blue;
-}
-
-.typograph{
-  cursor: pointer;
-}
-
-.key {
-  width: 100px;
-  margin-right: 10px;
-}
-
-.form {
-  justify-self: center;
-  align-content: center;
-  justify-items: center;
-  justify-content: center;
-  align-self: center;
-  height: 500px;
-  width: 150px;
-  margin-top: 30px;
-  height: 200px;
-  margin-left: 50px;
-  margin-top: 40px;
-}
-
-.app {
-  display: flex;
-  flex-direction: row;
-}
-
-
-.qty {
-  background-color: whitesmoke;
-  height: 250px;
-  width: 250px;
-  align-content: center;
-  justify-content: center;
-  justify-self: baseline;
-  margin-top: 250px;
-  border-radius: 5px;
-  box-shadow: cadetblue;
-}
-
-.nav {
-  background-color: blanchedalmond;
-}
+/*         Imported in Orderform.js and Navbar.js             */
 
 .margin{
   margin-top: 15px;
@@ -69,25 +11,10 @@
   background-color: rgb(88, 154, 240);
 }
 
-.redText{
-  text-decoration-color: red;
-  color: red;
-  font-weight:bold;
-  padding-right: 5px;
-}
-.greenText{
-  text-decoration-color: green;
-  color: green;
-  font-weight: bold;
-  padding-right: 10px;
-}
-
 .formBody{
   width: 450px;
 }
 
-.Alert{
-  justify-self: right;
-  
-  width: 100px;
+.typograph{
+  cursor: pointer;
 }

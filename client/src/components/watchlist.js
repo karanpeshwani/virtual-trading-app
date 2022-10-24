@@ -36,7 +36,7 @@ export default function BasicList(props) {
               if(val["LTP"] != 0){  
                 return (
                   <ListGroup.Item
-                    disablePadding
+                    className="item"
                     onMouseLeave={() => setkeyj("")}
                     onMouseEnter={() => {
                       setkeyj(key_1);

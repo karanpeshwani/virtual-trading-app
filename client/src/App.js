@@ -28,7 +28,7 @@ function App() {
   const [masterOBJ, setmasterOBJ] = useState(masterOBJ_1);
   const [perm_data, setperm_data] = useState(perm_d);
   const [change_perm_data, setchange_perm_data] = useState(true);
-  const [email, setEmail] = useState(null);
+  const [email, setEmail] = useState("karanpeshwani7@gmail.com");
   const [cashRemaining, setCashRemaining] = useState(1000000);
   const [PandL, setPandL] = useState(0);
 

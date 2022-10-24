@@ -24,7 +24,6 @@ export default function Form(props) {
   }, [userInput, masterOBJ[Selected_stock]["LTP"]]);
 
   const handleSubmit = () => {
-    console.log(typeof(userInput));
     var qty = parseInt(userInput, 10);
     setform(false);
     const margin_req = masterOBJ[Selected_stock]["LTP"] * qty;
@@ -50,10 +49,6 @@ export default function Form(props) {
     } else if (typeoftrade === "sell") {
       axios
         .post(url + `/getData/price/query/hello_sell`, data)
-        .then((res) => {
-          console.log("res.data");
-          console.log(res.data);
-        })
         .then(() => {
           setchange_perm_data((old) => {
             return !old;

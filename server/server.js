@@ -23,7 +23,6 @@ app.use(
   })
 );
 
-
 onServerClientSocket_and_onFinhubWebSocket_func();
 
 // GETTING THE ROUTES

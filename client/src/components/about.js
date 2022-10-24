@@ -30,15 +30,15 @@ function About() {
           through virtual currency.
         </li>
         <li>
-          Users first need to register and create their account. The account is
-          credited with a virtual currency amounting $ 1 million.
+          Users first need to SignIn/Login. The account is
+          credited with a virtual currency amounting $ 1,000,000.
         </li>{" "}
         <li>
-          Post registration the users can purchase/ sell stocks and cryptos
+          Post registration the users can buy/sell stocks and cryptos
           given in the watchlist, and can also search for specific instrument.
         </li>
         <li>
-          The <b>Positions</b> page enables to track the current position of a
+          The <b>Holdings</b> page enables to track the current position of a
           purchase/sell of different instruments.
         </li>
         <li>
@@ -47,7 +47,7 @@ function About() {
         </li>
         <li>
           <b>Socket IO</b> and <b>Finnhub API</b> is used for streaming live
-          market prices and <b>JWT</b> serves the purpose for authentication.
+          market prices and <b>Token</b> serves the purpose for authentication.
         </li>
       </Typography>
     </Container>
