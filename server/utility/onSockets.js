@@ -1,5 +1,4 @@
-
-const onFinhubWebSocket_func = require("./test-pricedata");
+const onFinhubSocketFunction = require("./onFinhubSocketFunction");
 
 const io = require("socket.io")(4000, {
   cors: {
@@ -16,7 +15,7 @@ function onServerClientSocket_and_onFinhubWebSocket_func() {
       console.log(data);
     });
 
-    onFinhubWebSocket_func(socket);
+    onFinhubSocketFunction(socket);
   });
 }
 

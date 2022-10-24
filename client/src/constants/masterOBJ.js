@@ -29,8 +29,8 @@ var masterOBJ = {
     P_L: 0,
     percentage_change: 0,
   },
-  FB: {
-    symbol: "FB",
+  META: {
+    symbol: "META",
     LTP: 0,
     P_L: 0,
     percentage_change: 0,
@@ -48,10 +48,10 @@ var masterOBJ = {
     percentage_change: 0,
   },
 "BINANCE:BTCUSDT": {
-      symbol: "BINANCE:BTCUSDT",
-      LTP: 99,
-      P_L: 0,
-      percentage_change: 0,
+  symbol: "BINANCE:BTCUSDT",
+  LTP: 99,
+  P_L: 0,
+  percentage_change: 0,
 },
   PYPL: {
     symbol: "PYPL",

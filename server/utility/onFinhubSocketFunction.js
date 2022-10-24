@@ -8,7 +8,7 @@ const arr = [
   "NFLX",
   "INTC",
   "NVDA",
-  "FB",
+  "META",
   "GOOGL",
   "AMZN",
   "PYPL",
@@ -34,7 +34,7 @@ function roundToX(num, X) {
   return +(Math.round(num + "e+" + X) + "e-" + X);
 }
 
-function Getprice(sock) {
+function onFinhubSocketFunction(sock) {
   console.log("GetPrice working");
   const WebSocket = require("ws");
   const socket = new WebSocket(
@@ -67,4 +67,4 @@ function Getprice(sock) {
   };
 }
 
-module.exports = Getprice;
+module.exports = onFinhubSocketFunction;

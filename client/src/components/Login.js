@@ -3,26 +3,15 @@ Login page of the app
 */
 import React, { useState } from "react";
 import "../stylings/login.css"
-import Button from "../components/Coppied_Components/components/Button";
+import Button from "./sourced_components/components/Button";
 import TextField from "@mui/material/TextField";
 
 const Login = (props) => {
-  const { email , setEmail , setToken } = props;
+  const {setEmail , setToken } = props;
+
+  const [inputEmail, setInputEmail] = useState("");
   const [password, setPassword] = useState(null);
   const [error, setError] = useState(null);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const token = await loginUser({ email: email, password: password });
-    if(token.token === "not-a-token"){
-      // setError
-      setError("Either the user is not registered or the password is incorrect. Please try again.")
-    }
-    else{
-      setToken(token);
-    }
-    console.log(token);
-  };
 
   async function loginUser(credentials) {
     return fetch("http://localhost:5000/login", {
@@ -33,6 +22,19 @@ const Login = (props) => {
       body: JSON.stringify(credentials),
     }).then((data) => data.json());
   }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const token = await loginUser({ email: inputEmail, password: password });
+    if(token.token === "not-a-token"){
+      // setError
+      setError("Either the user is not registered or the password is incorrect. Please try again.")
+    }
+    else{
+      setToken(token);
+      setEmail(inputEmail);
+    }
+  };
 
   return (
     <div className="Login">
@@ -45,9 +47,9 @@ const Login = (props) => {
           type="email"
           placeholder="Email"
           className="tf1"
-          value={email}
+          value={inputEmail}
           onChange={(e)=>{
-            setEmail(e.target.value)
+            setInputEmail(e.target.value)
           }}
         />
 

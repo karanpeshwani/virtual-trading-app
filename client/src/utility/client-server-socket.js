@@ -1,4 +1,4 @@
-function ON_client_socket(setmasterOBJ,perm_data) {
+function ON_client_socket(setBackmasterOBJ,perm_data) {
   const io = require("socket.io-client");
   const socket = io("ws://localhost:4000");
 
@@ -9,8 +9,6 @@ function ON_client_socket(setmasterOBJ,perm_data) {
     var obj_from_server = JSON.parse(data);
     var updated_obj={}
     for(var x in obj_from_server){
-      console.log(x);
-      console.log(perm_data['TSLA']);
       updated_obj[x] = {
         symbol: x,
         LTP: obj_from_server[x],
@@ -21,7 +19,7 @@ function ON_client_socket(setmasterOBJ,perm_data) {
           100,
       };
     }
-    setmasterOBJ((old_dt) => {
+    setBackmasterOBJ((old_dt) => {
       return {
         ...old_dt,
         ...updated_obj,

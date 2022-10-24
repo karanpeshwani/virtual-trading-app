@@ -4,11 +4,11 @@ This function runs every time a new token-key is provided (when new user logs-in
 */
 
 import axios from "axios";
-import url from "./url";
+import url from "../constants/url";
 import clientServerSocket from "./client-server-socket";
 import DBDataToMasterData from "./DBDataToMasterData";
 
-function On_the_sockets(setmasterOBJ, perm_data, email) {
+function On_the_sockets(setBackmasterOBJ, perm_data, email) {
   console.log("ON Sockets");
   axios
     .get(url + `/${email}/get_BD_data`, {headers : {"email" : email}})
@@ -21,7 +21,7 @@ function On_the_sockets(setmasterOBJ, perm_data, email) {
       })
     })
     .then(() => {
-      clientServerSocket(setmasterOBJ,perm_data);
+      clientServerSocket(setBackmasterOBJ,perm_data);
     })
     .catch((err) => {
       console.log(err);

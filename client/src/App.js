@@ -8,29 +8,32 @@ import {
 import Navbar from "./components/navbar";
 import "../src/stylings/App.css";
 import Watchlist from "./components/watchlist";
-import Orderform2 from "./components/Orderform";
+import Orderform from "./components/Orderform";
 import HoldingsTable from "./components/holdingsTable";
 import On_the_sockets from "./utility/on-sockets";
 import Login from "./components/Login";
 import axios from "axios";
-import url from "./utility/url";
+import url from "./constants/url";
 import DBDataToMasterData from "./utility/DBDataToMasterData";
 import About from "./components/about";
-const masterOBJ_1 = require("./utility/masterOBJ");
-const perm_d = require("./utility/permanent_data");
+const masterOBJ_1 = require("./constants/masterOBJ");
+const perm_d = require("./constants/permanent_data");
 
 function App() {
-  const { token, setToken } = useToken();
+  const { token, setToken } = useToken(null);
   const [typeoftrade, settypeoftrade] = useState("");
   const [form, setform] = useState(false);
   const [Selected_stock, setSelected_stock] = useState("");
   const [key, setkey] = useState("");
-  const [masterOBJ, setmasterOBJ] = useState(masterOBJ_1);
+  const [BackmasterOBJ, setBackmasterOBJ] = useState(masterOBJ_1);
+  const [masterOBJ, setmasterOBJ] = useState(BackmasterOBJ);
   const [perm_data, setperm_data] = useState(perm_d);
   const [change_perm_data, setchange_perm_data] = useState(true);
-  const [email, setEmail] = useState("karanpeshwani7@gmail.com");
+  // const [email, setEmail] = useState("karanpeshwani7@gmail.com");
+  const [email, setEmail] = useState(null);
   const [cashRemaining, setCashRemaining] = useState(1000000);
   const [PandL, setPandL] = useState(0);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     if(email != null){
@@ -51,13 +54,19 @@ function App() {
   }, [change_perm_data, email]);
 
   useEffect(() => {
-    On_the_sockets(setmasterOBJ, perm_data, email);
+    if(token != null){
+      On_the_sockets(setBackmasterOBJ, perm_data, email);
+    }
   }, [token]);
 
-  if (!token) {
+  setTimeout(() => {
+    setmasterOBJ(BackmasterOBJ);
+  }, 15000);
+
+  if (token == null) {
     return (
       <div>
-        <Login email={email} setEmail={setEmail} setToken={setToken} />
+        <Login setEmail={setEmail} setToken={setToken} />
       </div>
     );
   }
@@ -69,9 +78,9 @@ function App() {
           path="/"
           element={
             <div>
-              <Navbar />
+              <Navbar search={search} setSearch={setSearch} />
               {form ? (
-                <Orderform2
+                <Orderform
                   perm_data={perm_data}
                   setchange_perm_data={setchange_perm_data}
                   masterOBJ={masterOBJ}
@@ -90,6 +99,7 @@ function App() {
                     setkey={setkey}
                     setform={setform}
                     setSelected_stock={setSelected_stock}
+                    search={search}
                   />
                 </div>
                 <div className="Div3">
@@ -114,9 +124,9 @@ function App() {
           path="/holdings"
           element={
             <div>
-              <Navbar />
+              <Navbar search={search} setSearch={setSearch} />
               {form ? (
-                <Orderform2
+                <Orderform
                   perm_data={perm_data}
                   setchange_perm_data={setchange_perm_data}
                   masterOBJ={masterOBJ}
@@ -134,6 +144,7 @@ function App() {
                   setkey={setkey}
                   setform={setform}
                   setSelected_stock={setSelected_stock}
+                  search = {search}
                 />
                 <HoldingsTable masterOBJ={masterOBJ} perm_data={perm_data} />
               </div>
@@ -145,7 +156,7 @@ function App() {
           path="/about"
           element={
             <div>
-              <Navbar />
+              <Navbar search={search} setSearch={setSearch} />
               <About />
             </div>
           }
