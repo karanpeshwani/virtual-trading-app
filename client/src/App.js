@@ -18,6 +18,7 @@ import DBDataToMasterData from "./utility/DBDataToMasterData";
 import About from "./components/about";
 const masterOBJ_1 = require("./constants/masterOBJ");
 const perm_d = require("./constants/permanent_data");
+var BackmasterOBJ = masterOBJ_1;
 
 function App() {
   const { token, setToken } = useToken(null);
@@ -25,7 +26,6 @@ function App() {
   const [form, setform] = useState(false);
   const [Selected_stock, setSelected_stock] = useState("");
   const [key, setkey] = useState("");
-  const [BackmasterOBJ, setBackmasterOBJ] = useState(masterOBJ_1);
   const [masterOBJ, setmasterOBJ] = useState(BackmasterOBJ);
   const [perm_data, setperm_data] = useState(perm_d);
   const [change_perm_data, setchange_perm_data] = useState(true);
@@ -55,13 +55,22 @@ function App() {
 
   useEffect(() => {
     if(token != null){
-      On_the_sockets(setBackmasterOBJ, perm_data, email);
+      On_the_sockets(BackmasterOBJ, perm_data, email);
     }
-  }, [token]);
+  }, [token]);  
 
-  setTimeout(() => {
-    setmasterOBJ(BackmasterOBJ);
-  }, 15000);
+
+  // using setstate inside setInterval: Not easy
+  useEffect(() => {
+    setInterval(() => {
+      console.log("setInterval Executed");
+        // setmasterOBJ(BackmasterOBJ);
+        setmasterOBJ(()=>{
+          const newSetMasterOBJ = JSON.parse(JSON.stringify(BackmasterOBJ));
+          return newSetMasterOBJ;
+        })
+      }, 2000); 
+  }, []);
 
   if (token == null) {
     return (
@@ -88,6 +97,7 @@ function App() {
                   Selected_stock={Selected_stock}
                   setform={setform}
                   form_={form}
+                  email={email}
                 />
               ) : null}
               <div className="Div2">
@@ -134,6 +144,7 @@ function App() {
                   Selected_stock={Selected_stock}
                   setform={setform}
                   form_={form}
+                  email={email}
                 />
               ) : null}
               <div className="Div2">

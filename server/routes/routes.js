@@ -15,7 +15,7 @@ router.get("/:eml/get_BD_data", (req, res) => {
     .catch((e) => console.log(e));
 });
 
-router.post("/getData/price/query/hello", (req, res) => {
+router.post("/transaction/buy", (req, res) => {
   /*
   req.body = {
     email : "XXXX@XXXX.com",
@@ -25,16 +25,14 @@ router.post("/getData/price/query/hello", (req, res) => {
   }
   */
   const dt = req.body;
-
   //update the database of the user
   update_data_buy(dt)
     .then((portf) => res.send(portf))
     .catch((err) => console.log(err));
   console.log(dt);
-  // res.sendStatus(200)
 });
 
-router.post("/getData/price/query/hello_sell", (req, res) => {
+router.post("/transaction/sell", (req, res) => {
   const dt = req.body;
   //update the database of the user
   update_data_sell(dt)

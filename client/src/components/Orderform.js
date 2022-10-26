@@ -16,6 +16,7 @@ export default function Form(props) {
     setform,
     Selected_stock,
     form_,
+    email
   } = props;
 
   const [margin_required, setmargin_required] = useState(0);
@@ -30,7 +31,7 @@ export default function Form(props) {
     setform(false);
     const margin_req = masterOBJ[Selected_stock]["LTP"] * qty;
     const data = {
-      email: "karanpeshwani7@gmail.com",
+      email: email,
       quantity: qty,
       margin_req: margin_req,
       Selected_stock: Selected_stock,
@@ -38,7 +39,7 @@ export default function Form(props) {
 
     if (typeoftrade === "buy") {
       axios
-        .post(url + `/getData/price/query/hello`, data)
+        .post(url + `/transaction/buy`, data)
         .then((res) => {
           console.log("res.data");
           console.log(res.data);
@@ -50,7 +51,7 @@ export default function Form(props) {
         });
     } else if (typeoftrade === "sell") {
       axios
-        .post(url + `/getData/price/query/hello_sell`, data)
+        .post(url + `/transaction/sell`, data)
         .then(() => {
           setchange_perm_data((old) => {
             return !old;
@@ -93,9 +94,8 @@ export default function Form(props) {
               }}
             />
           </div>
-          <div className="margin">Margin: $ {margin_required}</div>
+          <div className="margin">Margin: $ {margin_required.toFixed(2)}</div>
         </Modal.Body>
-
         <Modal.Footer>
           <Button
             variant="secondary"

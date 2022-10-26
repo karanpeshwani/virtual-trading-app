@@ -8,7 +8,7 @@ import url from "../constants/url";
 import clientServerSocket from "./client-server-socket";
 import DBDataToMasterData from "./DBDataToMasterData";
 
-function On_the_sockets(setBackmasterOBJ, perm_data, email) {
+function On_the_sockets(BackmasterOBJ, perm_data, email) {
   console.log("ON Sockets");
   axios
     .get(url + `/${email}/get_BD_data`, {headers : {"email" : email}})
@@ -21,7 +21,7 @@ function On_the_sockets(setBackmasterOBJ, perm_data, email) {
       })
     })
     .then(() => {
-      clientServerSocket(setBackmasterOBJ,perm_data);
+      clientServerSocket(BackmasterOBJ,perm_data);
     })
     .catch((err) => {
       console.log(err);
