@@ -31,8 +31,10 @@ const Login = (props) => {
       setError("Either the user is not registered or the password is incorrect. Please try again.")
     }
     else{
+      setEmail({
+        email: inputEmail
+      });
       setToken(token);
-      setEmail(inputEmail);
     }
   };
 
