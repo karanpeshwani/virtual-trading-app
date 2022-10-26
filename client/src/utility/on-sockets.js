@@ -17,7 +17,7 @@ function On_the_sockets(BackmasterOBJ, perm_data, email) {
       DBDataToMasterData(res.data)
       .then((res)=>{
           perm_data = {...perm_data,...res}
-          console.log(perm_data);
+          // console.log(perm_data);
       })
     })
     .then(() => {

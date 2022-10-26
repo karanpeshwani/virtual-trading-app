@@ -4,12 +4,8 @@ function roundToX(num, X) {
 
 async function DBDataTomasterOBJ(obj) {
   var dataa = {};
-  var PandL = 0;
-  var initialAmount = 1000000;
-  var totalNow = obj["cash_remaining"];
   for (var x in obj["portfolio"]) {
     var dt = {};
-    totalNow += obj["invested_val"][x];
     dt[x] = {
       symbol: x,
       QTY: roundToX(obj["portfolio"][x], 2),
@@ -17,9 +13,8 @@ async function DBDataTomasterOBJ(obj) {
     };
     dataa = { ...dataa, ...dt };
   }
-  console.log(dataa);
-  PandL = totalNow - initialAmount;
-  return [dataa, PandL];
+  // console.log(dataa);
+  return [dataa];
 }
 
 export default DBDataTomasterOBJ;

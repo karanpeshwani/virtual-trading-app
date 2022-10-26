@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Routes,
-  Route,
-} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./navbar";
 import "../stylings/homeScreen.css";
 import Watchlist from "./watchlist";
@@ -18,8 +15,7 @@ const perm_d = require("../constants/permanent_data");
 var BackmasterOBJ = masterOBJ_1;
 
 function HomeScreen(props) {
-
-  const {email} = props;
+  const { email } = props;
   const [typeoftrade, settypeoftrade] = useState("");
   const [form, setform] = useState(false);
   const [Selected_stock, setSelected_stock] = useState("");
@@ -28,39 +24,47 @@ function HomeScreen(props) {
   const [perm_data, setperm_data] = useState(perm_d);
   const [change_perm_data, setchange_perm_data] = useState(true);
   const [cashRemaining, setCashRemaining] = useState(1000000);
-  const [PandL, setPandL] = useState(0);
+  // const [PandL, setPandL] = useState(0);
+  var securityValue = 0;
+  for (const security in perm_data) {
+    // console.log("added ", perm_data[security]);
+    // console.log("added ", perm_data[security]["QTY"]);
+    // console.log("added ", perm_data[security]["QTY"]*masterOBJ[security]["LTP"]);
+    securityValue += perm_data[security]["QTY"] * masterOBJ[security]["LTP"];
+  }
+  const PandL = securityValue + cashRemaining - 1e6;
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    if(email != null){
-      axios.get(url + `/${email}/get_BD_data`, {headers : {"email" : email}} ).then((res) => {
-        setCashRemaining((res.data)["cash_remaining"]);
-        console.log(res.data);
-        DBDataToMasterData(res.data).then(([res, pl]) => {
-          setperm_data((old) => {
-            return {
-              ...old,
-              ...res,
-            };
+    if (email != null) {
+      axios
+        .get(url + `/${email}/get_BD_data`, { headers: { email: email } })
+        .then((res) => {
+          setCashRemaining(res.data["cash_remaining"]);
+          console.log(res.data);
+          DBDataToMasterData(res.data).then(([res]) => {
+            setperm_data((old) => {
+              return {
+                ...old,
+                ...res,
+              };
+            });
           });
-          setPandL(pl.toFixed(2));
         });
-      });
     }
   }, [change_perm_data, email]);
-
 
   // using setstate inside setInterval: Not easy
   useEffect(() => {
     On_the_sockets(BackmasterOBJ, perm_data, email);
 
     setInterval(() => {
-        // setmasterOBJ(BackmasterOBJ); // this is wrong
-        setmasterOBJ(()=>{
-          const newSetMasterOBJ = JSON.parse(JSON.stringify(BackmasterOBJ));
-          return newSetMasterOBJ;
-        })
-      }, 2000);
+      // setmasterOBJ(BackmasterOBJ); // this is wrong
+      setmasterOBJ(() => {
+        const newSetMasterOBJ = JSON.parse(JSON.stringify(BackmasterOBJ));
+        return newSetMasterOBJ;
+      });
+    }, 3000);
   }, []);
 
   return (
@@ -96,16 +100,41 @@ function HomeScreen(props) {
                   />
                 </div>
                 <div className="Div3">
-                  <h4>Hello User, {email}</h4>
+                  <h4>Hello User,</h4>
+                  <h4>{email}</h4>
                   <hr />
-                  <h5>Cash Remaining : {cashRemaining.toFixed(2)}</h5>
+                  {cashRemaining >= 1e6 ? (
+                    <div className="Div4">
+                      <h3>Cash Remaining : </h3>
+                      <div className="margin20px"></div>
+                      <h3>$ {(cashRemaining / 1e6).toFixed(2)}M</h3>
+                    </div>
+                  ) : cashRemaining >= 1e3 ? (
+                    <div className="Div4">
+                      <h3>Cash Remaining : </h3>
+                      <div className="margin20px"></div>
+                      <h3>$ {(cashRemaining / 1e3).toFixed(2)}K</h3>
+                    </div>
+                  ) : (
+                    <div className="Div4">
+                      <h3>Cash Remaining : </h3>
+                      <div className="margin20px"></div>
+                      <h3>$ {cashRemaining.toFixed(2)}</h3>
+                    </div>
+                  )}
                   <hr />
                   <div className="Div4">
-                    <h5>Total Profit/Loss : </h5>
+                    <h3>Total Profit/Loss : </h3>
                     <div className="margin10px"></div>
-                    <h5 className={ PandL > 0
-                          ? "greenText"
-                          : "redText"}>{PandL}</h5>
+                    <h3 className={PandL > 0 ? "greenText" : "redText"}>
+                      {PandL >= 1e6 ? (
+                        <h3>$ {(PandL / 1e6).toFixed(2)}M</h3>
+                      ) : PandL >= 1e3 ? (
+                        <h3>$ {(PandL / 1e3).toFixed(2)}K</h3>
+                      ) : PandL <= -1*1e3 ? (
+                        <h3>$ {(PandL/1e3).toFixed(2)}K</h3>
+                      ) : (<h3>$ {PandL.toFixed(2)}</h3>)}
+                    </h3>
                   </div>
                 </div>
               </div>
@@ -138,7 +167,7 @@ function HomeScreen(props) {
                   setkey={setkey}
                   setform={setform}
                   setSelected_stock={setSelected_stock}
-                  search = {search}
+                  search={search}
                 />
                 <HoldingsTable masterOBJ={masterOBJ} perm_data={perm_data} />
               </div>

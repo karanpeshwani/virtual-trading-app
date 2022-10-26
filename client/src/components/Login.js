@@ -3,6 +3,7 @@ Login page of the app
 */
 import React, { useState } from "react";
 import "../stylings/login.css"
+import url from "../constants/url";
 import Button from "./sourced_components/components/Button";
 import TextField from "@mui/material/TextField";
 
@@ -14,7 +15,7 @@ const Login = (props) => {
   const [error, setError] = useState(null);
 
   async function loginUser(credentials) {
-    return fetch("http://localhost:5000/login", {
+    return fetch(url + `/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

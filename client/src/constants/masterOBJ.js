@@ -1,5 +1,5 @@
 var masterOBJ = {
-  "TSLA": {
+  TSLA: {
     symbol: "TSLA",
     LTP: 0,
     P_L: 0,
@@ -49,7 +49,7 @@ var masterOBJ = {
   },
 "BINANCE:BTCUSDT": {
   symbol: "BINANCE:BTCUSDT",
-  LTP: 99,
+  LTP: 0,
   P_L: 0,
   percentage_change: 0,
 },
